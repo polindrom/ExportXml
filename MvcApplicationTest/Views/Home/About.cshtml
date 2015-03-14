@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+<p>Use this area to provide additional information.</p>
+@Ajax.ActionLink("Export", "Exportxml", new AjaxOptions()
+{
+    LoadingElementId = "divProgress",
+    LoadingElementDuration = 10000
+})
+
+@Ajax.ActionLink("ExportXLS", "ExportExcel", new AjaxOptions()
+{
+    LoadingElementId = "divProgress",
+    LoadingElementDuration = 10000
+})
+
+<div id="divProgress" style="display:none">
+    <img src=@Url.Content("~/Content/spiffygif_28x28.gif") alt="loading..." />
+</div>
+
