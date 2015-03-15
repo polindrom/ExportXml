@@ -5,16 +5,16 @@
 <h3>@ViewBag.Message</h3>
 <p>Use this area to provide additional information.</p>
 
-@Ajax.ActionLink("Export to XML", "ExportXml", new AjaxOptions()
+@Ajax.ActionLink("Export to XML", "GetOutputString", new { format = "xml" }, new AjaxOptions()
 {
     OnSuccess = "onSuccess",
-    LoadingElementId = "divProgress"
+    LoadingElementId = "divProgress",
 })
 
-@Ajax.ActionLink("Export to CSV", "ExportXml", new AjaxOptions()
+@Ajax.ActionLink("Export to CSV", "GetOutputString", new { format = "csv" }, new AjaxOptions()
 {
-    OnSuccess = "onSuccess",
-    LoadingElementId = "divProgress"
+    OnSuccess = "onSuccess2",
+    LoadingElementId = "divProgress",
 })
 
 <div id="divProgress" style="display: none">
@@ -26,9 +26,11 @@
     <script src="../../Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         function onSuccess(data) {
-            var url = "/Home/ExportXml/";
-            window.location = url;
+            window.location = "/Home/ExportXml";
+        }
+
+        function onSuccess2(data) {
+            window.location = "/Home/ExportCsv";
         }
     </script>
 }
-
